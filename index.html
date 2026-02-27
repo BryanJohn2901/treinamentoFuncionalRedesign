@@ -101,7 +101,7 @@
     </nav>
 
     <section
-        class="hero-bg relative min-h-screen pt-32 pb-20 flex items-center overflow-hidden">
+        class="hero-bg relative min-h-screen pt-48 md:pt-32 pb-20 flex items-center overflow-hidden">
         <div class="absolute inset-0 bg-black/30 z-0"></div>
 
         <div
@@ -1161,30 +1161,32 @@
             if (btn.disabled) return;
             btn.disabled = true;
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            var phoneRaw = document.getElementById('phone').value;
-            phoneRaw = phoneRaw.replace(/\D/g, '');
-            const phone = phoneRaw;
-            const utm_source = document.getElementById('utm_source').value;
-            const utm_term = document.getElementById('utm_term').value;
-            const utm_campaign = document.getElementById('utm_campaign').value;
-            const utm_medium = document.getElementById('utm_medium').value;
-            const utm_content = document.getElementById('utm_content').value;
-            const url = document.getElementById('url').value;
+            // Atualiza url com a página atual no momento do envio
+            document.getElementById('url').value = window.location.href;
 
+            const name = (document.getElementById('name').value || '').trim();
+            const email = (document.getElementById('email').value || '').trim();
+            var phoneRaw = (document.getElementById('phone').value || '').replace(/\D/g, '');
+            const phone = phoneRaw;
+            const utm_source = (document.getElementById('utm_source').value || '').trim();
+            const utm_term = (document.getElementById('utm_term').value || '').trim();
+            const utm_campaign = (document.getElementById('utm_campaign').value || '').trim();
+            const utm_medium = (document.getElementById('utm_medium').value || '').trim();
+            const utm_content = (document.getElementById('utm_content').value || '').trim();
+            const url = (document.getElementById('url').value || '').trim();
+
+            // Redirect Eduzz: mesma ordem do template (name, email, phone, utm_*, url)
             const baseRedirect = 'https://chk.eduzz.com/6W4821RA0Z';
-            const params = new URLSearchParams({
-                name: name,
-                email: email,
-                phone: phone,
-                utm_source: utm_source,
-                utm_term: utm_term,
-                utm_campaign: utm_campaign,
-                utm_medium: utm_medium,
-                utm_content: utm_content,
-                url: url
-            });
+            const params = new URLSearchParams();
+            params.set('name', name);
+            params.set('email', email);
+            params.set('phone', phone);
+            params.set('utm_source', utm_source);
+            params.set('utm_term', utm_term);
+            params.set('utm_campaign', utm_campaign);
+            params.set('utm_medium', utm_medium);
+            params.set('utm_content', utm_content);
+            params.set('url', url);
             const redirectUrl = baseRedirect + '?' + params.toString();
 
             const webhookUrl = 'https://hook.us1.make.com/bhigavwc6bfhskmnicov25r6jv9fnt1p?produto=TF5';
