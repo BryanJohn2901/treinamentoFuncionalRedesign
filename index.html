@@ -78,7 +78,7 @@
                         <span
                             class="absolute -bottom-2 left-1/2 w-0 h-0.5 bg-brand-primary transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
                     </a>
-                    <a href="https://wa.me/5541999824070?text=Ol%C3%A1%2C+tenho+d%C3%BAvidas+sobre+a+P%C3%B3s-Gradua%C3%A7%C3%A3o+em+Treinamento+Funcional."
+                    <a href="https://wa.me/5541988239396?text=Ol%C3%A1%2C+tenho+d%C3%BAvidas+sobre+a+P%C3%B3s-Gradua%C3%A7%C3%A3o+em+Treinamento+Funcional."
                         target="_blank"
                         class="text-xs font-bold uppercase tracking-[0.15em] text-gray-400 hover:text-white transition-colors duration-300 relative group">
                         Dúvidas
@@ -880,7 +880,7 @@
                     <p class="text-gray-300 text-sm md:text-base max-w-md text-center md:text-left">
                         Ficou com mais alguma dúvida? Tire rapidamente pelo WhatsApp da nossa equipe!
                     </p>
-                    <a href="https://wa.me/5541999824070?text=Ol%C3%A1%2C+tenho+d%C3%BAvidas+sobre+a+P%C3%B3s-Gradua%C3%A7%C3%A3o+em+Treinamento+Funcional."
+                    <a href="https://wa.me/5541988239396?text=Ol%C3%A1%2C+tenho+d%C3%BAvidas+sobre+a+P%C3%B3s-Gradua%C3%A7%C3%A3o+em+Treinamento+Funcional."
                         target="_blank" rel="noopener noreferrer"
                         class="bg-[#25D366] text-white font-bold uppercase text-sm py-3 px-8 rounded-full hover:bg-[#128C7E] transition flex items-center gap-2 shadow-lg hover:shadow-[#25D366]/20">
                         <i class="fab fa-whatsapp text-lg"></i> Tirar Dúvidas
@@ -1015,7 +1015,7 @@
         </div>
     </div>
 
-    <footer class="relative bg-[#02060d] pt-20 pb-10 border-t border-white/5 overflow-hidden font-sans" data-aos="fade">
+    <footer class="relative bg-[#02060d] pt-20 pb-32 border-t border-white/5 overflow-hidden font-sans" data-aos="fade">
         <div class="container mx-auto px-6 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <!-- Brand Column -->
@@ -1064,16 +1064,20 @@
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fas fa-phone-alt text-brand-primary"></i>
-                            <span>(41) 99982-4070</span>
+                            <a href="tel:+554198823-9396" class="hover:text-white transition-colors">(41) 98823-9396</a>
                         </li>
                     </ul>
                 </div>
             </div>
 
             <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-gray-500 text-xs text-center md:text-left">
-                    &copy; 2026 Personal Trainer Academy. Todos os direitos reservados.
-                </p>
+                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 text-center md:text-left">
+                    <p class="text-gray-500 text-xs">
+                        &copy; 2026 Personal Trainer Academy. Todos os direitos reservados.
+                    </p>
+                    <span class="hidden sm:inline text-gray-600" aria-hidden="true">·</span>
+                    <a href="tel:+554198823-9396" class="text-gray-500 text-xs hover:text-white transition-colors">Suporte: (41) 98823-9396</a>
+                </div>
                 <div class="flex items-center gap-6 text-xs text-gray-500">
                     <div class="flex items-center gap-2">
                         <div class="w-2 h-2 rounded-full bg-green-500"></div>
@@ -1222,31 +1226,24 @@
             // Atualiza url com a página atual no momento do envio
             document.getElementById('url').value = window.location.href;
 
-            const name = (document.getElementById('name').value || '').trim();
+            const nome = (document.getElementById('name').value || '').trim();
             const email = (document.getElementById('email').value || '').trim();
-            var phoneRaw = (document.getElementById('phone').value || '').replace(/\D/g, '');
-            const phone = phoneRaw;
-            const utm_source = (document.getElementById('utm_source').value || '').trim();
-            const utm_term = (document.getElementById('utm_term').value || '').trim();
-            const utm_campaign = (document.getElementById('utm_campaign').value || '').trim();
-            const utm_medium = (document.getElementById('utm_medium').value || '').trim();
-            const utm_content = (document.getElementById('utm_content').value || '').trim();
-            const url = (document.getElementById('url').value || '').trim();
+            let telefone = (document.getElementById('phone').value || '').replace(/\D/g, '');
+            telefone = '+55' + telefone;
 
             const redirectUrl = 'https://pos.personaltraineracademy.com.br/obg-obrigado-tf/';
 
-            const webhookUrl = 'https://hook.us1.make.com/4n42ngpte48fu0mvpnh5ewi4vu3ddah4?produto=TF5';
+            const webhookUrl = 'https://hook.us1.make.com/bhigavwc6bfhskmnicov25r6jv9fnt1p?produto=TF5';
             const payload = {
-                name: name,
+                nome: nome,
                 email: email,
-                phone: phone,
-                utm_source: utm_source,
-                utm_term: utm_term,
-                utm_campaign: utm_campaign,
-                utm_medium: utm_medium,
-                utm_content: utm_content,
-                url: url,
-                date: new Date().toISOString()
+                telefone: telefone,
+                utm_source: document.getElementById('utm_source')?.value || '',
+                utm_term: document.getElementById('utm_term')?.value || '',
+                utm_campaign: document.getElementById('utm_campaign')?.value || '',
+                utm_medium: document.getElementById('utm_medium')?.value || '',
+                utm_content: document.getElementById('utm_content')?.value || '',
+                url: document.getElementById('url')?.value || window.location.href
             };
 
             fetch(webhookUrl, {
@@ -1267,6 +1264,40 @@
             }
         });
     </script>
+<style id="estilo-faixa-copa">
+    #faixa-copa { position: fixed; bottom: 0; left: 0; right: 0; z-index: 99999; background-color: #16a34a; border-top: 1px solid rgba(74, 222, 128, 0.5); box-shadow: 0 -10px 40px rgba(22, 163, 74, 0.4); overflow: hidden; font-family: 'Inter', sans-serif; }
+    #faixa-copa-fx { position: absolute; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transform: translateX(-100%); animation: shimmerCopa 3s infinite; }
+    #faixa-copa-content { display: flex; align-items: center; justify-content: center; padding: 12px 16px; position: relative; gap: 12px; flex-direction: column; }
+    #faixa-copa-text { color: #ffffff; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 4px; margin: 0; line-height: 1.4; }
+    #faixa-copa-highlight { color: #fde047; font-weight: 900; }
+    #faixa-copa-pulse { color: #bbf7d0; font-weight: 800; animation: pulseCopa 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    #faixa-copa-btn { background-color: #ffffff; color: #15803d; font-weight: 900; font-size: 11px; padding: 10px 24px; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; border: none; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); transition: transform 0.2s ease; white-space: nowrap; flex-shrink: 0; margin: 0; }
+    #faixa-copa-btn:hover { transform: scale(1.05); }
+    .faixa-copa-separator { display: none; opacity: 0.5; margin: 0 4px; }
+    @keyframes pulseCopa { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+    @keyframes shimmerCopa { 100% { transform: translateX(100%); } }
+    
+    /* Regra para manter em uma única linha no Desktop */
+    @media (min-width: 768px) {
+        #faixa-copa-content { flex-direction: row; gap: 24px; }
+        #faixa-copa-text { flex-direction: row; font-size: 14px; white-space: nowrap; }
+        .faixa-copa-separator { display: inline; }
+    }
+</style>
+
+<div id="faixa-copa">
+    <div id="faixa-copa-fx"></div>
+    <div id="faixa-copa-content">
+        <p id="faixa-copa-text">
+            <span>Matricule-se e garanta a <strong id="faixa-copa-highlight">camisa oficial do Time de Especialistas</strong></span>
+            <span class="faixa-copa-separator">|</span>
+            <span id="faixa-copa-pulse">EDIÇÃO LIMITADA</span>
+        </p>
+        <button type="button" id="faixa-copa-btn" onclick="abrirPopup(); return false;">
+            Garantir Minha Camisa
+        </button>
+    </div>
+</div>
 </body>
 
 </html>

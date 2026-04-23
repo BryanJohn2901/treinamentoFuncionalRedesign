@@ -109,6 +109,8 @@ async function build() {
 
   console.log('Processando CSS...');
   let cssCode = fs.readFileSync(path.join(DIST_CSS, 'style.raw.css'), 'utf8');
+  /* Tailwind input usa url('../img/...'); após build o CSS fica em dist/css/ → assets em ../assets/img/ */
+  cssCode = cssCode.replace(/url\(\.\.\/img\//g, 'url(../assets/img/');
   cssCode = cssCode.replace(/url\(img\//g, 'url(../assets/img/');
   const cssMinified = new CleanCSS({ level: 2 }).minify(cssCode).styles;
   fs.writeFileSync(path.join(DIST_CSS, 'style.css'), cssMinified, 'utf8');
