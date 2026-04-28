@@ -14,7 +14,7 @@ const DIST_JS = path.join(DIST, 'js');
 const DIST_ASSETS = path.join(DIST, 'assets');
 const SOURCE_HTML = path.join(ROOT, 'index.html');
 const CANONICAL_URL = 'https://pos.personaltraineracademy.com.br/';
-const THANK_YOU_URL = 'https://pos.personaltraineracademy.com.br/obg-obrigado-tf/';
+const THANK_YOU_URL = 'https://wa.me/554195999856?text=Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20p%C3%B3s%20gradua%C3%A7%C3%A3o%20em%20treinamento%20funcional';
 
 function cleanDist() {
   fs.rmSync(DIST, { recursive: true, force: true });
