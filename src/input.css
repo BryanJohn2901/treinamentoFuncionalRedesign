@@ -6,16 +6,16 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Hero: mobile = bgHeroMobile.webp, desktop = bgHero.webp */
+/* Hero: mobile = Tfmobile.jpg, desktop = TF web.jpg */
 .hero-bg {
-  background-image: url('../img/bgHeroMobile.webp');
+  background-image: url('../img/Tfmobile.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 @media (min-width: 768px) {
   .hero-bg {
-    background-image: url('../img/bgHero.webp');
+    background-image: url('../img/TF web.jpg');
   }
 }
 
